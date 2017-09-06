@@ -8,10 +8,14 @@ and longitude. The user has the option to download an updated CSV file.
 """
 from flask import Flask, render_template, request, send_file
 from werkzeug import secure_filename
+from geopy.geocoders import Nominatim
+import pandas
 
 app = Flask(__name__)
 
-# TODO: Define Geocoder function for uploaded CSV file.
+
+def geocoder(df):
+    pass
 
 
 @app.route('/')
@@ -28,10 +32,9 @@ def success():
         file = request.files['file']
         file.save(secure_filename('uploaded' + file.filename))
         # Create a dataframe object (pandas)
-        with open('uploaded' + file.filename, 'a') as f:
-            f.write('\nThis was added later!')
-        # insert call to Geocoder function
-        print(file)
+        df = pandas.read_csv('uploaded' + file.filename)
+        geocoder(df)
+        print(df)
         print(type(file))
         return render_template('index.html', btn='download.html')
     return render_template(

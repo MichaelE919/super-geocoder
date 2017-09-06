@@ -21,7 +21,7 @@ def index():
 
 
 @app.route('/success-table', methods=['POST'])
-def success_table():
+def success():
     """Collect data entered on form and commit to database."""
     global file
     if request.method == 'POST':

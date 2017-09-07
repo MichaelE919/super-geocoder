@@ -12,8 +12,11 @@
         <input type="file" accept=".csv" name="file"><br>
         <button type="submit">Submit</button>
       </form>
-      <div class="output">
+      <div class="message">
         {{text | safe}}
+      </div>
+      <div class="output">
+        {{table | safe}}
         {% include btn ignore missing %}
       </div>
     </div>

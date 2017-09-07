@@ -6,8 +6,9 @@ Script creates a simple Flask app which allows a user to upload a CSV file,
 then presents that dataset back to the user with additional values for latitude
 and longitude. The user has the option to download an updated CSV file.
 """
-import pandas
 import datetime
+
+import pandas
 from geopy.geocoders import Nominatim
 
 from flask import Flask, render_template, request, send_file
@@ -16,6 +17,7 @@ app = Flask(__name__)
 
 
 def geocoder(df):
+    """Locate address coordinates."""
     nom = Nominatim()
     if 'Address' in df.columns:
         df['Coordinates'] = df['Address'].apply(nom.geocode)
@@ -48,13 +50,12 @@ def success():
                 'upload_files/%Y-%m-%d-%H-%M-%S-%f' + '.csv')
             df.to_csv(filename, index=None)
             return render_template(
-                'index.html', text=df.to_html(), btn='download.html')
+                'index.html', table=df.to_html(), btn='download.html')
         except KeyError:
             return render_template(
                 'index.html',
-                text=
-                'Please make sure you have an address column in your CSV file!'
-            )
+                text=('Please make sure you have'
+                      ' an address column in your CSV file!'))
 
 
 @app.route('/download')

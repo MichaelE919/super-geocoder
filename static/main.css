@@ -24,15 +24,6 @@ html, body {
   margin: 20px;
 }
 
-.container input {
-  width: 350px;
-  height: 15px;
-  font-size: 15px;
-  margin: 2px;
-  padding: 20px;
-  transition: all 0.2s ease-in-out;
-}
-
 .container button {
   width: 70px;
   height: 30px;
@@ -40,10 +31,23 @@ html, body {
   margin: 3px;
 }
 
+.container input {
+  width: 200px;
+  height: 15px;
+  font-size: 15px;
+  margin: 2px;
+  padding: 5px;
+  transition: all 0.2s ease-in-out;
+}
+
 .container p {
   margin: 100px;
 }
 
+.message {
+  color: red;
+}
+
 .output {
-  display: inline-block:
+  display: inline-block;
 }

@@ -39,7 +39,7 @@ def index():
 
 @app.route('/success-table', methods=['POST'])
 def success():
-    """Collect data entered on form and commit to database."""
+    """Allow user to upload CSV file and return dataset with coordinates."""
     global filename
     if request.method == 'POST':
         file = request.files['file']
@@ -66,5 +66,5 @@ def download():
 
 
 if __name__ == '__main__':
-    app.debug = False
+    app.debug = True
     app.run()
